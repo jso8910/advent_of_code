@@ -68,8 +68,6 @@ def part_two(instructions):
         locs = {current_loc + current_dir *
                 i for i in range(1, instruction[1] + 1)}
         current_loc += current_dir * instruction[1]
-        # if current_loc in visited_locs:
-        #     break
         old_visited = visited_locs.copy()
         [visited_locs.add(l) for l in locs]
         if visited_locs - locs != old_visited:

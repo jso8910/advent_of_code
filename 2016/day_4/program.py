@@ -55,23 +55,14 @@ def part_two(names):
         letters = sorted(letters.items(), key=lambda x: (-x[1], x[0]))
         letters = ''.join([letter[0] for letter in letters])
         if letters[:5] == name[2]:
-            # sum_sector_ids += name[1]
-            # print(name)
             real_rooms.append(name)
 
     for room in real_rooms:
-        # for letter in room[0]:
-        # if letter.isalpha():
-        #     # letter = chr((ord(letter) + room[1] % 26))
-        #     room[0] = room[0].replace(letter, chr(
-        #         (ord(letter) + room[1] - 97) % 26 + 97))
 
         room[0] = room[0].translate(caesar(room[1]))
         if 'north' in room[0].lower():
             str.maketrans
             return room[1]
-
-    # return sum_sector_ids
 
 
 print(part_one(get_input()))

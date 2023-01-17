@@ -9,15 +9,12 @@ def get_input():
             case ["value", value, "goes", "to", "bot", bot]:
                 instructions.append({"value": int(value), "bot": int(bot)})
             case ["bot", bot, "gives", "low", "to", low_type, low, "and", "high", "to", high_type, high]:
-                # print(low_type == "output", bot, bot == "138")
                 bot_rules[int(bot)] = {
                     "low_type": low_type,
                     "low": int(low),
                     "high_type": high_type,
                     "high": int(high)
                 }
-            # case _:
-            #     print("Unknown instruction:", line)
 
     return instructions, bot_rules
 

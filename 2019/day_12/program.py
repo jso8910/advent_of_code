@@ -81,8 +81,6 @@ def part_two(moons, velocity):
         if x_period and y_period and z_period:
             return lcm(x_period, y_period, z_period)
 
-    # return sum(sum(abs(x) for x in moon[0]) * sum(abs(x) for x in moon[1]) for moon in zip(moons, velocity))
-
 
 print(part_one(*get_input()))
 print(part_two(*get_input()))

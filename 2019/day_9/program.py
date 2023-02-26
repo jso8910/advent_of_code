@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 
 # Boilerplate to get intcode to work
 from os import path
@@ -19,10 +19,10 @@ def get_input():
 def part_one(instructions):
     pointer = 0
     output = []
-    input_queue = [1]
+    input_queue = deque([1])
     relative_base = 0
     computer = Intcode()
-    for instruction, output, input_queue in computer.run(instructions, input_queue):
+    for instruction, output, input_queue, input_requested, pointer, relative_base in computer.run(instructions, input_queue):
         continue
     return output.pop()
 
@@ -30,10 +30,10 @@ def part_one(instructions):
 def part_two(instructions):
     pointer = 0
     output = []
-    input_queue = [2]
+    input_queue = deque([2])
     relative_base = 0
     computer = Intcode()
-    for instruction, output, input_queue in computer.run(instructions, input_queue):
+    for instruction, output, input_queue, input_requested, pointer, relative_base in computer.run(instructions, input_queue):
         continue
     return output.pop()
 

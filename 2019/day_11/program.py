@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 
 # Boilerplate to get intcode to work
 from os import path
@@ -29,8 +29,8 @@ def part_one(program):
     current_dir = -1j
     grid = defaultdict(bool)
     painted = set()
-    input_queue = [0]
-    for instruction, output, input_queue in computer.run(program, input_queue):
+    input_queue = deque([0])
+    for instruction, output, input_queue, input_requested, pointer, relative_base in computer.run(program, input_queue):
         if len(output) == 2:
             new_dir = output.pop()
             new_color = output.pop()
@@ -49,8 +49,8 @@ def part_two(program):
     current_dir = -1j
     grid = defaultdict(bool)
     grid[0] = True
-    input_queue = [1]
-    for instruction, output, input_queue in computer.run(program, input_queue):
+    input_queue = deque([1])
+    for instruction, output, input_queue, input_requested, pointer, relative_base in computer.run(program, input_queue):
         if len(output) == 2:
             new_dir = output.pop()
             new_color = output.pop()

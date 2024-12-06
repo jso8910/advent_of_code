@@ -21,7 +21,7 @@ def part_one(inp):
 def part_two(inp):
     c = Counter(inp[1])
     score = 0
-    for i in set(inp[0]):
+    for i in inp[0]:
         score += c[i] * i
     return score
 

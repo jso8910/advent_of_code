@@ -55,5 +55,24 @@ def part_two(rules, updates):
     return total
 
 
+from functools import cmp_to_key
+
+
+def alternative_with_sort(rules, updates):
+    def sort_func(a, b):
+        return -1 if a in rules[b] else 1 if b in rules[a] else 0
+
+    total_part_one = 0
+    total_part_two = 0
+    for update in updates:
+        new_update = sorted(update, key=cmp_to_key(sort_func))
+        if new_update == update:
+            total_part_one += update[len(update) // 2]
+        else:
+            total_part_two += new_update[len(update) // 2]
+    print(total_part_one, total_part_two)
+
+
 print(part_one(*get_input()))
 print(part_two(*get_input()))
+alternative_with_sort(*get_input())
